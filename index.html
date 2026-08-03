@@ -54,6 +54,19 @@ a:hover{text-decoration:underline}
   font-size:14px;color:var(--muted)}
 .updated .dot{width:8px;height:8px;border-radius:50%;background:var(--bright);flex:none}
 
+/* ---------- news ---------- */
+.news{background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:24px 26px 22px;margin-top:28px;box-shadow:var(--shadow)}
+.news-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px}
+.news-date{font-family:"Grandstander",sans-serif;font-weight:800;font-size:12px;
+  letter-spacing:.11em;color:var(--muted)}
+.news h2{font-size:23px;margin-bottom:10px}
+.news ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;max-width:66ch}
+.news li{padding-left:20px;position:relative}
+.news li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;
+  border-radius:50%;background:var(--bright)}
+.news .quiet{margin-top:14px}
+
 /* ---------- attention strip ---------- */
 .attention{margin:26px 0 8px;background:var(--you-bg);color:var(--you-ink);
   border-radius:18px;padding:24px 26px 22px}
@@ -366,6 +379,29 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
     <span>Kir keeps this page current. Reply to him however suits you.</span>
   </div>
 </header>
+
+<section class="news">
+  <div class="news-top">
+    <span class="pill new">NEW</span>
+    <span class="news-date">3 AUGUST 2026</span>
+  </div>
+  <h2>What changed</h2>
+  <ul>
+    <li><b>The whole purchase path was reviewed for the first time</b> - basket, checkout and
+    the account screens, in English, Spanish and German, at four screen sizes. Those three pages
+    had never been checked before.</li>
+    <li><b>Found why the checkout asks for addresses in German</b> on the English and Spanish
+    shops, and traced it to one plugin setting. Six fields, on the last screen before payment.</li>
+    <li><b>Found that the German checkout slides sideways on a phone</b>, so part of the form
+    sits off the edge of the screen.</li>
+    <li><b>Found the payment step offers "PayPal" twice</b>, from two different plugins, with
+    nothing to tell a buyer them apart.</li>
+    <li><b>Found four products with no photograph</b> out of 447 in the shop.</li>
+    <li>Wrote all of it up as instructions a developer can price and follow, and built this page.</li>
+  </ul>
+  <p class="quiet">Kir adds a new entry here the morning after each working day, and moves older
+  ones into a full work log. So the top of this page is always what is fresh.</p>
+</section>
 
 <div class="attention">
   <h2>Eight decisions are waiting for you</h2>
