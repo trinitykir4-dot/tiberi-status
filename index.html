@@ -183,6 +183,58 @@ tr:last-child td{border-bottom:0}
 td.de{font-weight:700}
 td.en{color:var(--muted)}
 
+/* ---------- the numbered fix list ----------
+   the number is the point of this list: Madeleine passes item numbers to Manish, so the
+   counter is content, and the card's bullet dot has to be turned off on top of it */
+.fixlist{list-style:none;margin:0;padding:0;max-width:none;counter-reset:fx;
+  display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:var(--card)}
+.card ol.fixlist > li{counter-increment:fx;margin:0;padding:14px 18px;position:static;
+  border-bottom:1px solid var(--line-soft);
+  display:grid;grid-template-columns:34px minmax(0,1fr);gap:3px 12px;align-items:start}
+.card ol.fixlist > li:last-child{border-bottom:0}
+.card ol.fixlist > li::before{content:counter(fx,decimal-leading-zero);
+  position:static;width:auto;height:auto;border-radius:0;background:none;
+  grid-column:1;grid-row:1;align-self:start;
+  font-family:"Grandstander",sans-serif;font-weight:800;font-size:14.5px;
+  color:var(--blue-ink);font-variant-numeric:tabular-nums;line-height:1.75}
+.fixlist .txt{grid-column:2;grid-row:1;font-size:15.5px;max-width:68ch}
+.fixlist .fix{grid-column:2;grid-row:2;justify-self:start;margin-top:3px}
+@media (min-width:720px){
+  .card ol.fixlist > li{grid-template-columns:34px minmax(0,1fr) auto}
+  .fixlist .fix{grid-column:3;grid-row:1;justify-self:end;margin-top:2px;margin-left:16px}
+}
+.fix{font-family:"Grandstander",sans-serif;font-weight:800;font-style:normal;font-size:10.5px;
+  letter-spacing:.11em;padding:4px 9px;border-radius:999px;white-space:nowrap;flex:none;
+  display:inline-block;line-height:1.5}
+.fix.money{background:#FCE4E6;color:#96101C}
+.fix.speed{background:#E4EEF7;color:#0B5A8F}
+.fix.law{background:#EAECEF;color:#3C4552}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px;
+  color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+
+/* her own words in the left column, so the table reads as her list, not ours */
+td.hers{font-weight:700;width:34%}
+td.num{white-space:nowrap;font-weight:700;color:var(--blue-ink);
+  font-variant-numeric:tabular-nums;width:1%}
+/* she reads this on a phone, and a sideways-scrolling table is where she stops reading,
+   so this one table stacks instead of scrolling */
+@media (max-width:600px){
+  .tablewrap.map{overflow-x:visible}
+  table.map{min-width:0;display:block}
+  table.map thead{display:none}
+  table.map tbody,table.map tr,table.map td{display:block;width:auto}
+  table.map tr{border-bottom:1px solid var(--line);padding:12px 15px}
+  table.map tr:last-child{border-bottom:0}
+  table.map td{border:0;padding:0}
+  table.map td.hers{font-size:15.5px}
+  table.map td.en{margin-top:3px}
+  table.map td.num{margin-top:5px;font-size:12px;letter-spacing:.08em}
+  table.map td.num::before{content:"ITEM ";font-family:"Grandstander",sans-serif;
+    font-weight:800;color:var(--muted)}
+}
+
 .split{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 @media (min-width:700px){.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .opt{border:2px solid var(--line);border-radius:16px;padding:20px 22px;background:var(--card)}
@@ -374,7 +426,7 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
   review of the website. Open a tab to read a track in detail.</p>
   <div class="updated">
     <span class="dot"></span>
-    <span>Last updated 3 August 2026</span>
+    <span>Last updated 4 August 2026</span>
     <span>&middot;</span>
     <span>Kir keeps this page current. Reply to him however suits you.</span>
   </div>
@@ -383,21 +435,25 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <section class="news">
   <div class="news-top">
     <span class="pill new">NEW</span>
-    <span class="news-date">3 AUGUST 2026</span>
+    <span class="news-date">4 AUGUST 2026</span>
   </div>
   <h2>What changed</h2>
+  <p style="margin-bottom:12px">You wrote back, and everything below is an answer to something
+  you said.</p>
   <ul>
-    <li><b>The whole purchase path was reviewed for the first time</b> - basket, checkout and
-    the account screens, in English, Spanish and German, at four screen sizes. Those three pages
-    had never been checked before.</li>
-    <li><b>Found why the checkout asks for addresses in German</b> on the English and Spanish
-    shops, and traced it to one plugin setting. Six fields, on the last screen before payment.</li>
-    <li><b>Found that the German checkout slides sideways on a phone</b>, so part of the form
-    sits off the edge of the screen.</li>
-    <li><b>Found the payment step offers "PayPal" twice</b>, from two different plugins, and
-    nothing on the page says which is which.</li>
-    <li><b>Found four products with no photograph</b> out of 447 in the shop.</li>
-    <li>Wrote all of it up as instructions a developer can price and follow, and built this page.</li>
+    <li><b>The website section is rewritten as the list you asked for.</b> Twenty numbered items,
+    sorted by what each is worth, each marked as money, speed or law. The two-option thing is
+    gone. Your own list of website work sits at the top with the item numbers filled in.</li>
+    <li><b>All four emails are rebuilt for Brevo.</b> Not converted by hand later - finished
+    files, with Brevo's own tags, ready to paste in. The Mailchimp tags are out.</li>
+    <li><b>Kir read your Instagram before writing anything about social.</b> Eleven of your last
+    twelve posts are Reels, one every three or four days, all about eleven seconds. You had
+    already invented four series and named them. The question was never how to film.</li>
+    <li><b>Two new pages for you</b>: how to film four reels in one morning, and six prompts to
+    copy when you need post ideas. Both are written for a phone.</li>
+    <li><b>Two things on the website list turned out to be smaller than we thought.</b> The
+    Spanish duplicate shop page already redirects, and the German pair already points search
+    engines at one of the two. Checked today rather than repeated from the July notes.</li>
   </ul>
   <p class="quiet">Kir adds a new entry here the morning after each working day, and moves older
   ones into a full work log. So the top of this page is always what is fresh.</p>
@@ -424,13 +480,13 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
       <span>Eight product photos are missing, four for print and four for the shop</span>
       <span class="arrow">&rarr;</span></button></li>
     <li><button class="ask" data-go="social" data-at="ask-social"><span class="tag">SOCIAL</span>
-      <span>The stand-in beer, the AI photo, and whether you post Reels</span>
+      <span>Six one-word answers and the posting week runs itself</span>
       <span class="arrow">&rarr;</span></button></li>
     <li><button class="ask" data-go="email" data-at="ask-email"><span class="tag">EMAIL</span>
-      <span>Which tool actually sends your email: Mailchimp or Brevo</span>
+      <span>The four Brevo templates are built. Who loads them, and what to do about the newsletter</span>
       <span class="arrow">&rarr;</span></button></li>
     <li><button class="ask" data-go="web" data-at="ask-paypal"><span class="tag">SHOP</span>
-      <span>Two PayPal buttons on checkout: which one should stay</span>
+      <span>Three items on the website list only you can answer, starting with the two PayPals</span>
       <span class="arrow">&rarr;</span></button></li>
   </ul>
 </div>
@@ -453,8 +509,9 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <section class="panel" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
   <div class="panel-head">
     <h2>Where everything stands</h2>
-    <p>Five tracks of work. Three are finished and in your hands. One is built and waiting
-    on your answers. One is written, costed by nobody yet, and is the big decision on this page.</p>
+    <p>Five tracks of work. Two are finished. Two moved today because of what you wrote back -
+    social and email. One, the website, is measured and written up and waiting on a price from
+    Manish.</p>
   </div>
 
   <div class="figs">
@@ -475,17 +532,21 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
     </div>
 
     <div class="card">
-      <div class="head"><h3>Social templates</h3><span class="pill done">DONE</span>
-        <span class="pill you">1 QUESTION</span></div>
-      <p>Fourteen sets of post templates, each in the four sizes you post in. You drop a photo
-      in and edit the text. A written guide explains how.</p>
+      <div class="head"><h3>Social</h3><span class="pill done">DONE</span>
+        <span class="pill new">READ THIS ONE</span></div>
+      <p>Fourteen sets of post templates, each in the four sizes you post in. New today, and the
+      part that answers what you wrote: a page on filming four reels in one morning, and a page
+      of prompts to copy when you need post ideas. Both built around what your account already
+      does.</p>
+      <div class="links"><button class="lnk solid" data-go="social">Read the social track</button></div>
     </div>
 
     <div class="card">
       <div class="head"><h3>Email templates</h3><span class="pill done">DONE</span>
         <span class="pill you">1 QUESTION</span></div>
-      <p>Welcome, order confirmation, abandoned cart and newsletter, all on the design system,
-      with real photos. They are ready to load into a sending tool.</p>
+      <p>Welcome, order confirmation, abandoned basket and newsletter, all on the design system,
+      with real photos. Rebuilt for Brevo today - four finished files, not drawings. Somebody
+      with Brevo access pastes them in and they are live.</p>
     </div>
 
     <div class="card">
@@ -500,10 +561,11 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
       <div class="head"><h3>Website tiberi.info</h3><span class="pill run">REVIEWED AND DRAWN</span>
         <span class="pill new">READ THIS ONE</span></div>
       <p>Kir measured twelve pages of the live shop at four screen sizes in all three
-      languages, redrew every page in Figma on the new design system, and wrote a
-      twenty-three section instruction list for Manish. Nothing has been applied to the live
-      site. The next move is yours.</p>
-      <div class="links"><button class="lnk solid" data-go="web">Read the website track</button></div>
+      languages and redrew every page in Figma. Out of that came <b>a list of twenty things to
+      fix</b>, sorted by what each one is worth, and written so Manish can price them one by
+      one. Nothing has been applied to the live site yet. Your own list of website work is in
+      there too, with the numbers filled in.</p>
+      <div class="links"><button class="lnk solid" data-go="web">Read the twenty items</button></div>
     </div>
   </div>
 </section>
@@ -512,9 +574,9 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <section class="panel" id="p-web" role="tabpanel" aria-labelledby="t-web" hidden>
   <div class="panel-head">
     <h2>The website</h2>
-    <p>Nobody asked for this review. Kir ran it because the shop is where the money comes
-    from, and because the design system only pays off if the site actually uses it. Here is
-    what he found, what he already built, and what it would take to land it.</p>
+    <p>You asked for a clear action list. This is it: twenty items, each one measured on the
+    live shop, each one written so Manish can price it on its own. Nothing on this list moves
+    a block or changes how a page is laid out.</p>
   </div>
 
   <div class="stack">
@@ -532,15 +594,150 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
         saying where the problem is, what to change, and how to check it worked. It ends with
         a twenty-three step checklist he can tick off.</li>
       </ul>
-      <p class="quiet">In other words, the design work is finished. What remains is
-      somebody applying it to the live site.</p>
+      <p class="quiet">In other words, the drawing is finished. What remains is somebody
+      applying the twenty items below to the live site.</p>
     </div>
 
     <div class="card">
-      <div class="head"><h3>The part that costs you orders today</h3><span class="pill new">NEW</span></div>
-      <p>Six address fields on the checkout are labelled in German. Not only on the German
-      shop, but on the English one and the Spanish one too. This is the last screen a customer
-      sees before paying.</p>
+      <div class="head"><h3>Your list, and what the measurements found</h3>
+        <span class="pill new">NEW</span></div>
+      <p>You sent your own list of website work. Every line of it is already on the list
+      below, with a number beside it. So this is not a separate project - it is your list,
+      with the sizes filled in.</p>
+      <div class="tablewrap map">
+        <table class="map">
+          <thead><tr><th>What you wrote</th><th>What the measurement found</th><th>Item</th></tr></thead>
+          <tbody>
+            <tr><td class="hers">Lower the image size</td>
+              <td class="en">Photos are sent five to nine times larger than they are shown</td>
+              <td class="num">09</td></tr>
+            <tr><td class="hers">Work on the web speed</td>
+              <td class="en">Around 800 KB of fonts and icons leaves the server on every page and draws almost nothing</td>
+              <td class="num">10, 11</td></tr>
+            <tr><td class="hers">Deleting fonts?</td>
+              <td class="en">Seven typefaces load; five of them draw six words in total</td>
+              <td class="num">10</td></tr>
+            <tr><td class="hers">Change the contrast of the prices</td>
+              <td class="en">Prices measure 2.53 where 4.5 is the readable level</td>
+              <td class="num">05</td></tr>
+            <tr><td class="hers">PayPal</td>
+              <td class="en">The payment step offers PayPal twice, from two plugins</td>
+              <td class="num">03</td></tr>
+            <tr><td class="hers">Work on the customer experience</td>
+              <td class="en">German fields on the English and Spanish checkout, the checkout sliding off a phone, the order button that looks optional</td>
+              <td class="num">01, 02, 04</td></tr>
+            <tr><td class="hers">Delete every page that is not used</td>
+              <td class="en">Two German shop addresses. The Spanish pair was already fixed with a redirect</td>
+              <td class="num">13</td></tr>
+            <tr><td class="hers">Add the legal notice</td>
+              <td class="en">The checkout has no tick-box for the terms and conditions</td>
+              <td class="num">15</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><h3>The list, in the order it is worth doing</h3></div>
+      <p>Sorted by what each one is worth, not by how hard it is. The first eight touch money
+      directly, the next five are speed, the last seven are the law and how the site reads.
+      If only part of it gets done, the top of the list is the part.</p>
+      <div class="legend">
+        <span><i class="fix money">MONEY</i> costs you orders</span>
+        <span><i class="fix speed">SPEED</i> slows the page</span>
+        <span><i class="fix law">LAW</i> accessibility and legal</span>
+      </div>
+      <ol class="fixlist">
+        <li><span class="txt"><b>Six address fields on the checkout ask in German</b> - on the
+          English shop and the Spanish shop as well. It is the last screen before paying. One
+          plugin holds those six labels as fixed German text.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>The German checkout runs off the side of a phone screen.</b>
+          Part of the form sits outside the screen and has to be dragged sideways to
+          reach.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>The payment step offers "PayPal" twice</b>, from two different
+          plugins, and nothing on the page says which is which. One of them should come off,
+          and only you know which one you are paid through.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>The button that finishes the order looks like the button next
+          to it.</b> "Proceed to Checkout" and "Apply Coupon" are the same shape, the same
+          colour and nearly the same width. The filled version already exists in your slide-out
+          basket - it is simply not used on the page that matters.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>Prices are printed in a blue that is too light to read.</b> It
+          measures 2.53 where 4.5 is the readable level. One colour value, changed in one
+          place, and every price in the shop follows. Shown below.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>All eleven checkout fields set their text at 14 pixels</b>, and
+          an iPhone zooms the whole page in when a field is that small. The customer then has to
+          pinch back out before the next field.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>Four products out of 447 show a grey box instead of a
+          photo</b>, and the box announces itself as "Placeholder". Either send four photos or
+          hide those four products until you have them.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>The Suppliers page opens empty.</b> Sixteen supplier names and
+          nothing underneath until a visitor clicks one. There is a seventeenth, hidden name
+          that the page believes is already open.</span>
+          <i class="fix money">MONEY</i></li>
+        <li><span class="txt"><b>Photos are sent five to nine times larger than they are
+          shown.</b> On the basket page a 570-pixel graphic is drawn at 65 pixels. The smaller
+          sizes already exist; the page asks for the wrong one.</span>
+          <i class="fix speed">SPEED</i></li>
+        <li><span class="txt"><b>Seven typefaces load on every page, and five of them draw six
+          words in total.</b> Of 623 KB of fonts, 546 KB is spent on those six words.</span>
+          <i class="fix speed">SPEED</i></li>
+        <li><span class="txt"><b>Nine small icons cost 299 KB</b> because they arrive as three
+          complete icon fonts. The same nine as separate files weigh 8 KB. Both bars are shown
+          below.</span>
+          <i class="fix speed">SPEED</i></li>
+        <li><span class="txt"><b>Every page title is hidden by one line of code.</b> The title
+          is still in the page, so Google reads it - the visitor is the only one who does
+          not.</span>
+          <i class="fix speed">SPEED</i></li>
+        <li><span class="txt"><b>The German shop answers at two addresses</b>, /de/shop/ and
+          /de/kiosk/. The second is already marked as the main one, so this is tidying rather
+          than damage. The Spanish pair was fixed with a redirect at some point and needs
+          nothing.</span>
+          <i class="fix speed">SPEED</i></li>
+        <li><span class="txt"><b>The keyboard outline is switched off for the whole site.</b>
+          Two lines of code, put there on purpose. Anyone browsing without a mouse cannot see
+          where they are on the page. Since June 2025 the European Accessibility Act applies to
+          shops selling in the EU. Kir is not a lawyer and this is not legal advice, but it is
+          worth putting in front of yours.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>The checkout has no tick-box for the terms and conditions.</b>
+          Same caveat - a question for your lawyer, not for Kir.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>Eight more places where text is too light</b> against what sits
+          behind it, on the home page and through the shop. The same family of problem as the
+          prices, and the same kind of fix.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>The basket, the checkout and the account pages show no
+          heading.</b> Somebody who lands on the checkout never sees the word "Checkout"
+          anywhere on it.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>The logo, the menu button and the basket link have no readable
+          name.</b> A screen reader announces the basket as a character from an icon font.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>The coupon box has no label.</b> The only name it has is the
+          grey text inside it, so the moment a visitor types, the field has no name at
+          all.</span>
+          <i class="fix law">LAW</i></li>
+        <li><span class="txt"><b>Four footer links are 0.8 pixels under the minimum tap
+          size.</b> The smallest thing on the list, and the cheapest.</span>
+          <i class="fix law">LAW</i></li>
+      </ol>
+      <p class="quiet">Every item was read on the live shop, twice, on different days. Items 1,
+      2, 3, 6, 7, 17 and 19 sit inside the basket and checkout, which is the part a paying
+      customer walks through.</p>
+    </div>
+
+    <div class="card">
+      <div class="head"><h3>Item 1 in full: the six German fields</h3><span class="pill new">NEW</span></div>
+      <p>These are the six, as the English shop shows them today. The Spanish shop shows the
+      same six German words.</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>The field asks</th><th>English shop should say</th><th>Spanish shop should say</th></tr></thead>
@@ -556,14 +753,10 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
       </div>
       <p>Kir found the cause: a plugin stores those six labels as fixed German text, so all
       three languages serve them. It is one settings screen to fix, once somebody has access.</p>
-      <p>Two more on the same screen. <b>The German checkout slides sideways on a phone</b> -
-      the form is wider than the screen, so part of it sits off the edge. And <b>the payment
-      step offers "PayPal" twice</b>, from two different plugins, with nothing to tell a buyer
-      which is which.</p>
     </div>
 
-    <div class="card" id="ask-paypal">
-      <div class="head"><h3>Look at this the way a customer does</h3></div>
+    <div class="card">
+      <div class="head"><h3>Items 5 and 11, shown rather than described</h3></div>
       <p>Prices across the shop are printed in a light blue. Text has to reach a contrast of
       4.5 against its background to be readable by everyone. Yours measures 2.53. The darker
       blue below is the same brand colour, one step deeper, and it passes.</p>
@@ -581,12 +774,8 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
       </div>
       <p class="quiet">This affects every price, every "Proceed to checkout" and every
       "Place order" button on the shop. It is one colour value, changed in one place.</p>
-    </div>
-
-    <div class="card">
-      <div class="head"><h3>The shop carries weight it never uses</h3></div>
-      <p>Every visitor downloads seven typefaces. Two of them are yours and do the work.
-      The other five draw six words in total across the whole site.</p>
+      <p style="margin-top:22px">And the weight the shop carries and never uses. Every visitor
+      downloads seven typefaces; two of them are yours and do the work.</p>
       <div class="bars">
         <div class="bar-line"><span class="lbl">Fonts today</span>
           <div class="bar"><i style="width:100%;background:#15ABFF"></i></div>
@@ -608,51 +797,33 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
       first.</p>
     </div>
 
-    <div class="card">
-      <div class="head"><h3>Two things that cost nothing today and could cost later</h3></div>
-      <ul>
-        <li><b>The keyboard outline is switched off across the whole site.</b> Somebody deleted
-        it on purpose, two lines of code. Anyone who browses without a mouse - and that
-        includes people using screen readers - cannot see where they are on the page. Since
-        June 2025 the European Accessibility Act applies to online shops selling in the EU.
-        Kir is not a lawyer and this page is not legal advice, but it is worth putting in front
-        of yours.</li>
-        <li><b>Every page heading is hidden.</b> One line of code hides the main title on all
-        pages. Google reads that heading to understand what a page is about, so the shop is
-        handing it nothing.</li>
-      </ul>
-    </div>
-
     <div class="card you" id="ask-web">
       <div class="head"><h3>What Kir needs from you</h3><span class="pill you">YOUR CALL</span></div>
-      <p>Kir does not manage Manish and cannot commission the work. The list is written so
-      Manish can price it section by section rather than as one lump.</p>
-      <p><b>Ask him to quote it, then decide.</b> There are two sensible sizes, and picking
-      the small one is a real answer.</p>
-      <div class="split" style="margin-top:14px">
-        <div class="opt pick">
-          <div class="who">Option A &middot; small</div>
-          <h4>Fix what leaks money</h4>
-          <p>The German checkout labels, the sideways checkout on phones, the duplicate PayPal,
-          the price colour, the two deleted lines that hide the keyboard outline, and the font
-          cut.</p>
-          <p class="quiet" style="margin-top:9px">Days rather than weeks. No page changes shape.
-          Most of the benefit sits here.</p>
-        </div>
-        <div class="opt">
-          <div class="who">Option B &middot; full</div>
-          <h4>Bring the site to the design system</h4>
-          <p>Everything in A, plus type, spacing and colour across all pages so the shop matches
-          the brand book, the catalogue and the social posts. The Figma layouts already exist,
-          so nothing has to be designed again.</p>
-          <p class="quiet" style="margin-top:9px">Larger, and it is the version where the design
-          system starts paying for itself.</p>
-        </div>
-      </div>
-      <p style="margin-top:16px"><b>One thing neither option does:</b> move anything. No block
-      changes position or size. The shop will look like your shop, only sharper and faster.</p>
-      <p><b>And one question only you can answer:</b> the checkout offers PayPal twice, through
-      two different plugins. Which one do you actually use? The other should come off.</p>
+      <p>Kir does not manage Manish and cannot commission the work. Each of the twenty items
+      says where the problem is, what to change and how to check it worked, so Manish can
+      price them one by one instead of as one lump.</p>
+      <p><b>Send him the list and ask him to quote it by number.</b> Then you can say yes to
+      the numbers that are worth it and leave the rest. Cutting the list is a real answer, and
+      the order it is in is the order Kir would cut it.</p>
+      <p><b>Nothing on the list moves anything.</b> No block changes position or size. The shop
+      will look like your shop, only sharper and faster.</p>
+      <p class="quiet">The document for Manish is written and waiting - twenty-three sections
+      and a twenty-three step checklist he can tick off. Kir sends it the day you ask.</p>
+    </div>
+
+    <div class="card you" id="ask-paypal">
+      <div class="head"><h3>Three of the twenty are yours, not Manish's</h3>
+        <span class="pill you">YOUR CALL</span></div>
+      <ul>
+        <li><b>Item 3, the two PayPals.</b> The checkout offers PayPal twice, through two
+        different plugins. Which one are you actually paid through? The other should come
+        off.</li>
+        <li><b>Item 7, the four missing photos.</b> Castell d'Aixa Red Wine, Vall de Xal&oacute;
+        Red Wine, Vall de Xal&oacute; White Wine and Probiotic Treatment. Send photos, or say
+        the word and Kir hides those four until you have them.</li>
+        <li><b>Item 15, the terms and conditions.</b> That one is for your lawyer. Kir can only
+        say that the tick-box is not there.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -704,12 +875,40 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <!-- ===================== SOCIAL ===================== -->
 <section class="panel" id="p-social" role="tabpanel" aria-labelledby="t-social" hidden>
   <div class="panel-head">
-    <h2>Social templates</h2>
-    <p>The part of this work you use most often. One Figma board, sorted by what you want to
-    say, with every template in the four sizes you post in.</p>
+    <h2>Social</h2>
+    <p>You said posting is the important one right now, and that you are not sure what you are
+    doing. Kir read your Instagram before answering, and the answer came out different from the
+    question. Two new pages here, both written for a phone.</p>
   </div>
 
   <div class="stack">
+
+    <div class="card">
+      <div class="head"><h3>What your Instagram actually says</h3>
+        <span class="pill new">NEW</span></div>
+      <p>Read off <a href="https://instagram.com/tiberi_vlc">instagram.com/tiberi_vlc</a> on
+      4 August, not guessed at:</p>
+      <ul>
+        <li><b>Eleven of your last twelve posts are Reels.</b> Between 9 June and 26 July you put
+        one up every three or four days. You are not somebody who does not know how to film.</li>
+        <li><b>They are all about eleven seconds</b>, all hands building a simple dish, all with
+        one line of Spanish on screen and no talking. That is a format, and it is yours.</li>
+        <li><b>You named four series yourself:</b> Desayuno con Tiberi, Picoteo Tiberi, Tiberi
+        presenta, and the summer-salad one.</li>
+        <li><b>Your best post got 17 likes</b>, three times your usual. It opened with the reader
+        - "if you have no time" - instead of with the jar. Your quietest one that month, same
+        product, same week, opened with the jar and got one.</li>
+        <li><b>The last one went up on 26 July.</b></li>
+      </ul>
+      <p>So the problem was never knowing how. It is that every reel costs a whole evening,
+      because you decide, set up, film, edit and write from scratch each time. Both pages below
+      exist to make one reel cost twenty minutes.</p>
+      <div class="links">
+        <a class="lnk solid" href="https://trinitykir4-dot.github.io/tiberi-status/reels/">How to film four reels in one morning</a>
+        <a class="lnk solid" href="https://trinitykir4-dot.github.io/tiberi-status/claude/">Six prompts for post ideas</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="head"><h3>Fourteen sets, four sizes each</h3><span class="pill done">DONE</span></div>
       <p>Feed post 1080&times;1350, square 1080&times;1080, story 1080&times;1920 and link
@@ -734,16 +933,23 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
     </div>
 
     <div class="card you" id="ask-social">
-      <div class="head"><h3>Questions about the templates</h3><span class="pill you">YOUR CALL</span></div>
+      <div class="head"><h3>Six answers, and Kir can do the rest</h3>
+        <span class="pill you">YOUR CALL</span></div>
+      <p>Each one has the options next to it. A one-word reply is a complete answer.</p>
       <ul>
-        <li>Some templates show a made-up beer called <b>"G&Eacute;NESIS IPA"</b> as a
-        stand-in. Which real product should replace it?</li>
-        <li>One community photo, the flat-lay of tins, is AI-made and the tin labels are
-        gibberish close up. Can you shoot a real one, or should Kir regenerate it?</li>
-        <li><b>Do you post Reels?</b> If you do, does the cover, hook, step, end card flow
-        match how you make them?</li>
-        <li>Which sets do you reach for most? Those get extended first.</li>
-        <li>Post copy exists in English and Spanish. Do you want German versions ready-made?</li>
+        <li><b>The four weekly series.</b> Keep those four names, or swap one?
+        &nbsp;<i>Keep / swap &ldquo;&hellip;&rdquo; for &ldquo;&hellip;&rdquo;</i></li>
+        <li><b>Which day do you post?</b> Kir puts the four slots in a calendar you can see.
+        &nbsp;<i>Tuesday / Wednesday / another day</i></li>
+        <li><b>Which morning do you want to film?</b> Once a month is enough for four reels.
+        &nbsp;<i>A date, or &ldquo;not yet&rdquo;</i></li>
+        <li><b>The made-up beer.</b> Some templates carry a stand-in called
+        &ldquo;G&Eacute;NESIS IPA&rdquo;. Which real product replaces it?
+        &nbsp;<i>A product name</i></li>
+        <li><b>The AI photo.</b> The flat-lay of tins is AI-made and the labels are gibberish up
+        close. &nbsp;<i>You shoot a real one / Kir replaces it</i></li>
+        <li><b>German post copy.</b> The templates carry English and Spanish today.
+        &nbsp;<i>Add German / not needed</i></li>
       </ul>
     </div>
   </div>
@@ -846,34 +1052,46 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <section class="panel" id="p-email" role="tabpanel" aria-labelledby="t-email" hidden>
   <div class="panel-head">
     <h2>Email templates</h2>
-    <p>Four templates on the design system, with real product photos. Built, checked and
-    waiting to be loaded into whatever tool sends your mail.</p>
+    <p>You said Brevo, so Kir rebuilt all four for Brevo. They are finished files now, not
+    drawings: whoever opens Brevo pastes one in and it is a template.</p>
   </div>
 
   <div class="stack">
     <div class="card">
-      <div class="head"><h3>What is ready</h3><span class="pill done">DONE</span></div>
+      <div class="head"><h3>Four files, ready to paste</h3><span class="pill done">DONE</span>
+        <span class="pill new">NEW</span></div>
       <ul>
-        <li><b>Welcome</b>, in Spanish.</li>
-        <li><b>Order confirmation</b>, in English.</li>
-        <li><b>Abandoned cart</b>, in English, with the repeating product row already wired to
-        Mailchimp's merge tags.</li>
-        <li><b>Newsletter</b>, in English.</li>
+        <li><b>Welcome</b>, in Spanish. Greets people by name when there is one on file, and
+        reads correctly when there is not.</li>
+        <li><b>Order confirmation</b>, in English, with the order number and the tracking link
+        wired in.</li>
+        <li><b>Abandoned basket</b>, in English. One product row repeats itself for however many
+        things were left in the basket.</li>
+        <li><b>Newsletter</b>, in English, with the photo cover and the torn wave.</li>
       </ul>
-      <p>They use the same colours, buttons and torn shapes as the rest of the brand, and the
-      photographs are real products rather than stock.</p>
+      <p>The Mailchimp tags are gone. Every unsubscribe link, every name, every product row now
+      uses Brevo's own tags, so nothing has to be rewired after loading.</p>
+      <p class="quiet">Kir wrote the loading steps click by click - which menu, which button,
+      which of Brevo's three editors to pick. He also checked all four in a browser at phone and
+      desktop width before calling them done.</p>
       <div class="links">
         <a class="lnk solid" href="https://www.figma.com/design/mT96eUnl7EdgQ8U5LTWFnl/">Open the email file</a>
       </div>
     </div>
 
     <div class="card you" id="ask-email">
-      <div class="head"><h3>One question before these can send</h3><span class="pill you">YOUR CALL</span></div>
-      <p>Your shop has <b>two mailing tools installed at once</b>: Mailchimp and Brevo. The
-      templates were built with Mailchimp's merge tags, which is a guess on Kir's part.</p>
-      <p><b>Which one do you actually send from?</b> Once you say, Kir converts the four
-      templates into that tool and they are live. If the answer is neither and you send by
-      hand, say that too - it changes the approach.</p>
+      <div class="head"><h3>Two things, and the mail starts sending</h3><span class="pill you">YOUR CALL</span></div>
+      <p><b>1. Who loads them?</b> Either somebody with Brevo access pastes the four files in,
+      about ten minutes in total, or you create an API key in Brevo and Kir does it from his
+      machine. That key opens the whole account including your contacts, so if you go that way,
+      hand it over in person and delete it the same day.</p>
+      <p><b>2. The newsletter needs a decision.</b> A template loaded as code cannot be edited in
+      Brevo's drag-and-drop builder afterwards. For the three automatic emails that costs nothing
+      - their text changes once a year. For the newsletter you write a new one every time.</p>
+      <p>So either you send Kir the text and photos and he returns the file, or he rebuilds the
+      newsletter inside the drag-and-drop builder so you edit it yourself. The second one is
+      close to the design rather than identical, and it is the one that gets you sending on your
+      own. <b>Which?</b></p>
     </div>
   </div>
 </section>
@@ -881,7 +1099,7 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <footer>
   <span>Prepared by Kir for Madeleine</span>
   <span>Tiberi design project</span>
-  <span>Updated 3 August 2026</span>
+  <span>Updated 4 August 2026</span>
 </footer>
 
 </div>
