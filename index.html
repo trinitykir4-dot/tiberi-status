@@ -66,6 +66,10 @@ a:hover{text-decoration:underline}
 .news li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:7px;
   border-radius:50%;background:var(--bright)}
 .news .quiet{margin-top:14px}
+/* the entry from the previous working day, kept until the work log page exists */
+.news-prev{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.news-prev h3{font-size:17px;margin:6px 0 9px}
+.news-prev li::before{background:var(--muted)}
 
 /* ---------- attention strip ---------- */
 .attention{margin:26px 0 8px;background:var(--you-bg);color:var(--you-ink);
@@ -426,7 +430,7 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
   review of the website. Open a tab to read a track in detail.</p>
   <div class="updated">
     <span class="dot"></span>
-    <span>Last updated 4 August 2026</span>
+    <span>Last updated 5 August 2026</span>
     <span>&middot;</span>
     <span>Kir keeps this page current. Reply to him however suits you.</span>
   </div>
@@ -435,11 +439,23 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <section class="news">
   <div class="news-top">
     <span class="pill new">NEW</span>
-    <span class="news-date">4 AUGUST 2026</span>
+    <span class="news-date">5 AUGUST 2026</span>
   </div>
   <h2>What changed</h2>
-  <p style="margin-bottom:12px">You wrote back, and everything below is an answer to something
-  you said.</p>
+  <ul>
+    <li><b>Kir fixed the break under the paella photo in the newsletter.</b> A yellow stripe sat
+    between the photo and the blue block and looked like a stray piece of another design. The
+    photo now runs taller, and the torn blue edge lies over it. The headline and the line under
+    it stay where they were.</li>
+    <li><b>The welcome email keeps its torn edge.</b> There the tear sits under a white block,
+    where it reads as that block continuing into the blue. Kir left it alone.</li>
+  </ul>
+
+<div class="news-prev">
+  <div class="news-top">
+    <span class="news-date">4 AUGUST 2026</span>
+  </div>
+  <h3>You wrote back, and everything below answers something you said</h3>
   <ul>
     <li><b>The website section is rewritten as the list you asked for.</b> Twenty numbered items,
     sorted by what each is worth, each marked as money, speed or law. The two-option thing is
@@ -455,6 +471,8 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
     Spanish duplicate shop page already redirects, and the German pair already points search
     engines at one of the two. Checked today rather than repeated from the July notes.</li>
   </ul>
+</div>
+
   <p class="quiet">Kir adds a new entry here the morning after each working day, and moves older
   ones into a full work log. So the top of this page is always what is fresh.</p>
 </section>
@@ -1099,7 +1117,7 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
 <footer>
   <span>Prepared by Kir for Madeleine</span>
   <span>Tiberi design project</span>
-  <span>Updated 4 August 2026</span>
+  <span>Updated 5 August 2026</span>
 </footer>
 
 </div>
