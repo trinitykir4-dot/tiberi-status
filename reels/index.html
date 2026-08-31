@@ -137,6 +137,55 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-si
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 
+/* The hub. She arrives with a question in her head, not with a page name, so the
+   question leads and the page title is the answer under it. */
+ol.ask{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:0}
+ol.ask > li{padding:22px 0;border-top:1px solid var(--line)}
+ol.ask > li:first-child{border-top:0;padding-top:6px}
+ol.ask .q{font-size:19.5px;font-weight:700;line-height:1.35;max-width:36ch}
+ol.ask .go-row{margin-top:10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+ol.ask .go{font-family:"Grandstander","DM Sans",sans-serif;font-weight:800;font-size:21px;
+  letter-spacing:-.01em;line-height:1.2}
+ol.ask .quiet{margin-top:6px;max-width:58ch}
+.pill.new{background:var(--blue);color:#fff}
+
+/* The brand book gets to speak in its own words before we rule on top of it. */
+blockquote.quote{margin:0;padding:15px 18px;border:1px solid var(--line);border-radius:14px;
+  background:#FBFCFD;font-size:17px;line-height:1.5}
+blockquote.quote cite{display:block;margin-top:8px;font-style:normal;font-size:13.5px;
+  color:var(--muted);letter-spacing:.02em}
+
+/* Three headlines read off the live shop, shown rather than described. */
+.live{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.live > div{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:13px 16px;
+  border-bottom:1px solid var(--line-soft);align-items:baseline}
+.live > div:last-child{border-bottom:0}
+.live b{font-size:12px;letter-spacing:.09em;color:var(--muted);font-weight:700}
+.live span{font-family:"Grandstander","DM Sans",sans-serif;font-weight:800;font-size:17px;
+  line-height:1.25}
+@media (max-width:560px){
+  .live > div{grid-template-columns:minmax(0,1fr);gap:3px}
+  .live span{font-size:15.5px}
+}
+
+/* Generic stacking labels, so a table with its own columns still reads on a phone
+   without the week/sells classes the reels table hard-codes. */
+@media (max-width:640px){
+  table.stackable td[data-l]::before{content:attr(data-l);display:block;font-size:11px;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;
+    margin-bottom:2px}
+  table.stackable td[data-l] + td[data-l]{margin-top:10px}
+  table.stackable td[data-l]{font-size:15px}
+}
+
+td.num{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+/* the before/after table: without fixed columns the middle one wraps every cell to two lines */
+table.swap{table-layout:fixed}
+table.swap col.c1{width:23%}
+table.swap col.c2{width:26%}
+@media (max-width:640px){ table.swap{table-layout:auto} }
+@media (max-width:640px){ table.stackable td.num[data-l]{font-weight:700} }
+
 </style>
 </head>
 <body>
@@ -255,6 +304,30 @@ footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);font-si
   Product first, and no question at the end.</p>
   <p class="quiet">Same product, same week, seventeen times the response. That is the only
   copywriting rule on this page.</p>
+</div>
+
+<div class="card">
+  <div class="head"><h2>Can AI film it for you</h2><span class="pill new">NEW</span></div>
+  <p>You asked about making reels with AI. It writes well and it cooks badly, so give it the
+  words and keep the camera.</p>
+  <p>Video generators still get hands wrong. Fingers merge, oil pours the way oil does not pour,
+  and a jar label turns into letters that spell nothing. On a food account those slips read as
+  cheap, and they read that way to the customer who cares most that the food is real.</p>
+  <p>The stronger reason sits on your table. Real food is the thing you have and a generator does
+  not. Eleven seconds of your own hands is the proof, and nobody can generate it or copy it.</p>
+  <h3>What it is good for</h3>
+  <ul>
+    <li><b>The words.</b> The line on screen, the caption, the English or German version. Six
+    blocks to copy are on the <a href="https://trinitykir4-dot.github.io/tiberi-status/claude/">Claude page</a>.</li>
+    <li><b>Deciding what to film.</b> Ask for four ideas the night before and you arrive at the
+    filming morning with a list instead of a decision.</li>
+    <li><b>Picking the take.</b> Describe your three takes and ask which one opens strongest.
+    A second opinion costs nothing at seven in the morning.</li>
+    <li><b>Subtitles,</b> on the day you start talking. Today you do not.</li>
+  </ul>
+  <h3>One rule</h3>
+  <p>A generated picture never stands in for a product a customer will receive. Not the jar, not
+  the label, not the basket. Everything else is fair.</p>
 </div>
 
 <div class="card">
